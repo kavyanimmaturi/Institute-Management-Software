@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Institute Management Software</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script src="https://kit.fontawesome.com/210c81289c.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+
+    <!-- =============== Dashboard =============== -->
+
+    <div class="navigation">
+        <div class="navigation-cont">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-book-open"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <hr class="separator" />
+
+                <li>
+
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-house"></i></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/students">
+                        <span class="icon"><i class="fa-solid fa-child"></i></span>
+                        <span class="title">Students</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/courses">
+                        <span class="icon"><i class="fa-solid fa-book"></i></span>
+                        <span class="title">Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/instructors">
+                        <span class="icon"><i class="fa-solid fa-person-chalkboard"></i></span>
+                        <span class="title">Instructor</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-question"></i></span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-gear"></i></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ============= Main ======================= -->
+
+        <div class="main">
+            <div class="top-bar">
+                <div class="toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="search-cont">
+                    <label>
+                        <input type="text" placeholder="Search Here..">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                </div>
+                <div class="user-cont">
+                    <img src="https://res.cloudinary.com/dtv22dsxc/image/upload/v1734163489/Performer3_pk9twg.jpg"
+                        alt="img" />
+                </div>
+            </div>
+
+            <!-- ============= Total Cards ============= -->
+
+            <div class="card-box">
+                <div class="score-card">
+                    <div>
+                        <div class="card-name">Total Students</div>
+                        <div class="score">18</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa-solid fa-children"></i>
+                    </div>
+                </div>
+                <div class="score-card">
+                    <div>
+                        <div class="card-name">Total Courses</div>
+                        <div class="score">20</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                </div>
+
+                <div class="score-card">
+                    <div>
+                        <div class="card-name">Total Instructors</div>
+                        <div class="score">21</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========== Data Table ========== -->
+           <div class="details-table">
+             <div class="recent-details">
+                <div class="card-header">
+                    <h2 class="Performers">Top Performers</h2>
+                    <a href="#" class="btn">View All</a>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Student</td>
+                            <td>Course</td>
+                            <td>Instructor</td>
+                            <td>Performance</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Henry</td>
+                            <td>SpringBoot</td>
+                            <td>Richard</td>
+                            <td>95%</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Michael</td>
+                            <td>Java</td>
+                            <td>John</td>
+                            <td>90%</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Julie</td>
+                            <td>ReactJs</td>
+                            <td>Mary</td>
+                            <td>85%</tr>
+                        </tr>
+                    
+                        <tr>
+                            <td>Ostwald</td>
+                            <td>Python</td>
+                            <td>Richard</td>
+                            <td>89%</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Peter</td>
+                            <td>SQL</td>
+                            <td>Robert</td>
+                            <td>85%</td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+           </div>
+
+    <!-- ================ Students Data ============== -->
+    <div class="details-table">
+        <div class="recent-details">
+           <div class="card-header">
+               <h2 id="/students">STUDENTS DETAILS</h2>
+           </div>
+
+           <table>
+               <thead>
+                   <tr>
+                       <td>ID</td>
+                       <td>Name</td>
+                       <td>Email</td>
+                       <td>Phone</td>
+                       <td>Enrollment Date</td>
+                       <td>Course</td>
+                   </tr>
+               </thead>
+             
+               <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.phone}"></td>
+                <td th:text="${student.enrollmentDate}"></td>
+                <td th:text="${student.course.name}"></td>
+            </tr>
+        
+               
+            
+                           
+               
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
